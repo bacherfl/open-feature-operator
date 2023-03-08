@@ -85,14 +85,13 @@ kind: Service
 metadata:
   name: open-feature-e2e-test-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: open-feature-e2e-test
   ports:
     - protocol: TCP
       port: 30000
       targetPort: 80
-      nodePort: 30000
 ---
 apiVersion: batch/v1
 kind: Job

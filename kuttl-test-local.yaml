@@ -1,6 +1,6 @@
 apiVersion: kuttl.dev/v1
 kind: TestSuite
-crdDir: ./operator/config/crd/bases
+crdDir: ./config/crd/bases
 testDirs:
-  - ./test/integration/
+  - ./test/e2e/kuttl/scenarios/
 timeout: 300
