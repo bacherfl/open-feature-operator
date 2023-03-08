@@ -73,6 +73,14 @@ e2e-test: manifests generate fmt vet
 	kubectl wait --for=condition=Available=True deploy --all -n 'open-feature-operator-system'
 	./test/e2e/run.sh
 
+.PHONY: e2e-test-kuttl #these tests should run on a real cluster!
+integration-test:
+	kubectl kuttl test --start-kind=false ./test/e2e/kuttl --config=./test/e2e/kuttl/kuttl-test.yaml
+
+.PHONY: e2e-test-kuttl-local #these tests should run on a real cluster!
+integration-test-local:
+	kubectl kuttl test --start-kind=false ./test/e2e/kuttl --config=./test/e2e/kuttl/kuttl-test-local.yaml
+
 .PHONY: lint
 lint:
 	go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@latest
